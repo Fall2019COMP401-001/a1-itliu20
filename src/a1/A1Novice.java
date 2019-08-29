@@ -9,44 +9,41 @@ public class A1Novice {
 		Scanner scan = new Scanner(System.in);
 
 		// Your code follows here.
-		//Integers
-		int count = scan.nextInt();
-		int[] values = new int[count];
 		
-		for (int i=0; i<values.length; i++) {
-			values[i] = scan.nextInt();
-		}
+		int customers = scan.nextInt();
+		String[] first = new String[customers];
+		String[] last = new String[customers];
+		double[] vfinal = new double[customers];
 		
-		//Strings
-		//String names = scan.next();
-		String[] fullname = new String[2];
-		
-		for (int j=0; j<2; j++) {
-			fullname[j] = scan.next();
-		}
-		
-		//Doubles
-		//double item = scan.nextDouble();
-		double[] price = new double[values.length - 2];
-		
-		for (int k=0; k<price.length; k++) {
-			price[k] = scan.nextDouble();
-		}
-		scan.close();
-		
-		double[] multiply = new double[price.length];
-		
-		for (int i=0; i<price.length; i++) {
-			multiply[i] = price[i] * values[i+2];
-		}
-		
-		double sum = calculateValueSum(multiply);
-		
-		for (int i=0; i<multiply.length; i++) {
-		System.out.println(fullname[0].charAt(0) + ". " + fullname[1] + " " + sum);
+		for (int i=0; i<customers; i++) {
+			first[i] = scan.next();
+			last[i] = scan.next();
+			int items = scan.nextInt();
+			int[] amount = new int[items];
+			String[] type = new String[items];
+			double[] price = new double[items];
+			double[] total = new double[items];
+			
+			for (int j=0; j<items; j++) {
+				amount[j] = scan.nextInt();
+				type[j] = scan.next();
+				price[j] = scan.nextDouble();
+				total[j] = amount[j] * price[j];
+				}
+			
+			//looked at a1 example for help on sum
+			double sum = calculateValueSum(total);
+			vfinal[i] = sum;
+			}
+			scan.close();
+			
+			for (int k=0; k<customers; k++) {
+				System.out.println(first[k].charAt(0) + ". " + last[k] + ": " + String.format("%.2f", vfinal[k]));
+			}
+			
 		
 		}
-	}
+	//look at a1 example for help
 	static double calculateValueSum(double[] multiply) {
 		
 		double sum = 0;
