@@ -34,6 +34,7 @@ public class A1Jedi {
 
 			int[] howmuch = new int[bought];
 			String[] produce = new String[bought];
+		
 			
 			for (int j=0; j<bought; j++) {
 				howmuch[j] = scan.nextInt();
@@ -42,7 +43,19 @@ public class A1Jedi {
 				for (int k=0; k<food.length; k++) {
 					if (produce[j].equals(food[k])) {
 						amount[k] += howmuch[j];
+						
 						totalcustomers[k] += 1;
+						
+						for (int l=0; l<produce.length; l++) {
+							if (produce[j].equals(produce[l]) && j!=l) {
+								totalcustomers[k] -= 1;
+								/* if found repeating items, subtract 1 from totalcustomers then stops
+								process so if item shows up again, won't keep subtracting
+								*/ break;
+							}
+						}
+						
+					
 					}
 				}
 			}
