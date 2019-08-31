@@ -39,7 +39,7 @@ public class A1Adept {
 				howmuch[j] = scan.nextInt();
 				produce[j] = scan.next();
 				
-				//problem here
+		
 				for (int k=0; k<food.length; k++) {
 					if (produce[j].equals(food[k])) {
 						total[j] = howmuch[j] * price[k];
