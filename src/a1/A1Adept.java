@@ -39,12 +39,10 @@ public class A1Adept {
 				howmuch[j] = scan.nextInt();
 				produce[j] = scan.next();
 				
-				
 				//problem here
-				for (int k=0; k<food.length-1; k++) {
-					if (produce[j] == food[k]) {
-						System.out.println(food[k]);
-						total[j] = (howmuch[j]) * (price[k]);
+				for (int k=0; k<food.length; k++) {
+					if (produce[j].equals(food[k])) {
+						total[j] = howmuch[j] * price[k];
 					}
 				
 			}
@@ -52,10 +50,8 @@ public class A1Adept {
 			
 		double sum = calculateValueSum(total);
 		vfinal[i] = sum;
-		System.out.println(Arrays.toString(total));
 	}
 		scan.close();
-		
 		
 		double min = findValueMin(vfinal);
 		double max = findValueMax(vfinal);
@@ -73,7 +69,8 @@ public class A1Adept {
 						" (" + String.format("%.2f", min) + ")");
 			}
 		}
-		double avg = (calculateValueSum(vfinal)) / (calculateSum(totalbought));
+		double avg = (calculateValueSum(vfinal)) / customer;
+
 		System.out.println("Average: " + String.format("%.2f", avg));
 		
 }
